@@ -7,13 +7,14 @@
 	<authorUrl>http://www.joomlaeventmanager.net</authorUrl>
 	<copyright>copyright (C) 2013-2014 joomlaeventmanager.net</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-	<version>2.0-dev002</version>
+	<version>2.0-dev003</version>
 	<description>PLG_JEM_DEMO_XML_DESCRIPTION</description>
 
 	<files>
 		<filename plugin="demo">demo.php</filename>
 
 		<folder>language</folder>
+		<folder>data</folder>
 	</files>
 
 	<config>
