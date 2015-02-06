@@ -1,9 +1,9 @@
 <?php
 /**
- * @version 2.0.2
+ * @version 2.1.2
  * @package JEM
  * @subpackage JEM Demo Plugin
- * @copyright (C) 2013-2014 joomlaeventmanager.net
+ * @copyright (C) 2013-2015 joomlaeventmanager.net
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -11,6 +11,8 @@ defined('_JEXEC') or die;
 
 // Import library dependencies
 jimport('joomla.plugin.plugin');
+jimport('joomla.filesystem.file');
+jimport('joomla.filesystem.folder');
 
 include_once(JPATH_SITE.'/components/com_jem/helpers/helper.php');
 
@@ -59,25 +61,25 @@ class plgJemDemo extends JPlugin {
 		// clear current data
 		$query = 'TRUNCATE TABLE #__jem_categories;';
 		$this->_db->setQuery($query);
-		$this->_db->query();
+		$this->_db->execute();
 		$query = "INSERT IGNORE INTO `#__jem_categories` (`id`, `parent_id`, `lft`, `rgt`, `level`, `catname`, `alias`, `access`, `published`) VALUES (1, 0, 0, 1, 0, 'root', 'root', 1, 1);";
 		$this->_db->setQuery($query);
-		$this->_db->query();
+		$this->_db->execute();
 		$query = 'TRUNCATE TABLE #__jem_venues;';
 		$this->_db->setQuery($query);
-		$this->_db->query();
+		$this->_db->execute();
 		$query = 'TRUNCATE TABLE #__jem_events;';
 		$this->_db->setQuery($query);
-		$this->_db->query();
+		$this->_db->execute();
 		$query = 'TRUNCATE TABLE #__jem_cats_event_relations;';
 		$this->_db->setQuery($query);
-		$this->_db->query();
+		$this->_db->execute();
 		$query = 'TRUNCATE TABLE #__jem_attachments;';
 		$this->_db->setQuery($query);
-		$this->_db->query();
+		$this->_db->execute();
 		$query = 'TRUNCATE TABLE #__jem_register;';
 		$this->_db->setQuery($query);
-		$this->_db->query();
+		$this->_db->execute();
 
 		// delete images and attachments
 		JemHelper::delete_unused_image_files('events');
@@ -110,7 +112,7 @@ class plgJemDemo extends JPlugin {
 		$queries = $this->readSqlQueries('demo.sql');
 		foreach ($queries as $query) {
 			$this->_db->setQuery($query);
-			$this->_db->query();
+			$this->_db->execute();
 
 		}
 
